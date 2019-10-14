@@ -4,20 +4,12 @@ body{
    background-color: #ab88ff;
 
 }
-.footer{
-   background-color: #ab88ff;
-   display: flex;
-   align-items: center;
-   height: 40px;
-   width: 100%;
-}
-.footer a{
-   color: white;
-   cursor: pointer;
-   font-size: 14px;
+
+
+.categories__title{
+   color:white;
+   font-size: 20px;
+   position: absolute;
    padding-left: 30px;
-   text-decoration: none;
-}
-.footer a:hover{
-   text-decoration: underline;
+   width: 100%;
 }
