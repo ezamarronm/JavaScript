@@ -243,18 +243,18 @@ body {
   margin-right: 10px;
 }
 
-.login_cointainer--signup {
+.login__container--signup {
   font-size: 14px;
 }
 
-.login_cointainer--signup a {
+.login__container--signup a {
   font-size: 16px;
   color: white;
   font-weight: bold;
   text-decoration: none;
 }
 
-.login_cointainer--signup a:hover {
+.login__container--signup a:hover {
   text-decoration: underline;
 }
 
@@ -334,18 +334,18 @@ body {
   flex-direction: column;
 }
 
-.login_cointainer--signin {
+.login__container--signin {
   font-size: 14px;
 }
 
-.login_cointainer--signin a {
+.login__container--signin a {
   font-size: 16px;
   color: white;
   font-weight: bold;
   text-decoration: none;
 }
 
-.login_cointainer--signin a:hover {
+.login__container--signin a:hover {
   text-decoration: underline;
 }
 
