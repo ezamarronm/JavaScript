@@ -1,0 +1,28 @@
+.main {
+  height: 100px;
+  text-align: center;
+}
+
+.main__title {
+  color: white;
+  font-size: 20px;
+}
+
+.input {
+  border: 2px solid white;
+  border-radius: 30px;
+  color: white;
+  font-family: "Muli", sans-serif;
+  font-size: 16px;
+  height: 40px;
+  padding: 0px 20px;
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+
+::placeholder {
+  color: white;
+}
+
+/*# sourceMappingURL=main.css.map */
