@@ -3,7 +3,7 @@ const violetcolor = document.getElementById('violetcolor')
 const orangecolor = document.getElementById('orangecolor')
 const greencolor = document.getElementById('greencolor')
 const btnStart = document.getElementById('btnStart')
-const LASTLEVEL = 10
+const LASTLEVEL = 3
 
 class Game{
    constructor(){
@@ -13,7 +13,7 @@ class Game{
      
    }
    start(){
-      btnStart.classList.add('hide')
+      this.toggleBtnStart()
       this.level = 1
       this.colors = {
          skybluecolor, 
@@ -25,6 +25,13 @@ class Game{
       this.nextLevel = this.nextLevel.bind(this)
 
    }
+   toggleBtnStart(){
+      if (btnStart.classList.contains('hide')) {
+         btnStart.classList.remove('hide')
+      } else {
+         btnStart.classList.add('hide')
+      }
+   }
    generateSequence(){
       this.sequence = new Array(LASTLEVEL).fill(0).map(n => Math.floor(Math.random() * 4) ) 
 
@@ -32,7 +39,6 @@ class Game{
    nextLevel(){
       this.subLevel = 0
       this.lightUpSequence()
-      this.addClickEvents()
    }
 
    numberToColor(num) {
@@ -79,18 +85,21 @@ class Game{
    lightUpSequence(){
       for (let i = 0; i < this.level; i++) {
          const color = this.numberToColor(this.sequence[i])
+         console.log(i)
          setTimeout(() => {
-            this.lightUpColor(color)
+            this.lightUpColor(color,i)
          }, 1000*i);
       }
    }
 
-   lightUpColor(color){
+   lightUpColor(color,i){
       this.colors[color].classList.add('light')
-      setTimeout(() => this.turnColorOff(color), 350)
+      setTimeout(() => this.turnColorOff(color,i), 350)
    }
-   turnColorOff(color){
+   turnColorOff(color, i){
       this.colors[color].classList.remove('light')
+      if(i+1 === this.level)
+         this.addClickEvents()      
    }
 
    addClickEvents(){
@@ -116,17 +125,33 @@ class Game{
             this.level++
             this.deleteClickEvents()
             if (this.level === (LASTLEVEL +1 ) ) {
-                  alert('You won! Congrats!')
+               this.winGame()   
+               //alert('You won! Congrats!')
             }else{
                 setTimeout(this.nextLevel, 1300);
              }
          }
       } else {
-         alert('Sorry you lost :(')
+         this.loseGame()
+         //alert('Sorry you lost :(')
       }
 
    }
 
+   winGame(){
+      swal('Congrats!', 'You Win!','success')
+      .then( ()=> {
+         this.start()
+      }) 
+   }
+
+   loseGame(){
+      swal('Sorry :(', 'You lose, try again.','error')
+      .then(() => {
+         this.deleteClickEvents()
+         this.start()
+      })
+   }
 }
 
 function startGame() {
