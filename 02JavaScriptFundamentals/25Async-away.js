@@ -20,36 +20,20 @@ function onError(id){
    console.log(`An error ocurred with the character ${id}`)
 }
 
-characters = []
-
-const promises = () => {
-  for(i = 1; i < 17; i++){
-    characters.push(getACharacter(i));
-  }
+async function getCharacters() {
+   var ids = [1, 2, 3, 4, 5, 6, 7]
+   var promises = ids.map( id => getACharacter(id) )
+   try {
+      var characters = await Promise.all(promises)
+      characters.forEach(character => {
+         console.log(`${character.name}`)
+      })
+   } catch (id) {
+      onError(id)
+   }
 }
 
-promises();
-Promise
-  .all(characters)
-  .then(characters => {
-     characters.forEach(character => {
-        console.log(`${character.name}`)
-     });
-  })
-  .catch(onError)
-
-
-//var ids = [1, 2, 3, 4, 5, 6, 7]
-/* var promises = ids.map(function (id) {
-   return getACharacter(id)
-})
-*/
-// var promises = ids.map( id => getACharacter(id) )
-// Promise.all(promises)
-// .then( (characters) => {
-//    console.log(characters)
-// })
-// .catch(onError)
+getCharacters()
 
 /* getACharacter(1)
    .then( (character) => {
