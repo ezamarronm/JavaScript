@@ -44,3 +44,4 @@ getACharacter(1)
    .catch( (id) => {
       onError(id)
    })
+
