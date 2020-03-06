@@ -58,5 +58,6 @@ console.log(peopleCM) */
 
 const reducer = (totalbooks, person) => totalbooks + person.books
 
+const array = []
 var totalbooks = people.reduce(reducer, 0)
 console.log(`Books in total: ${totalbooks}`)
