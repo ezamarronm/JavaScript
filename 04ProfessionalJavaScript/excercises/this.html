@@ -1,6 +1,7 @@
 <html>
   <head>
     <title>this</title>
+    <meta charset="UTF-8">
   </head>
 
   <body>
@@ -13,16 +14,64 @@
 
     <script>
       // this en el scope global
-
+      console.log(`In the global scope this is: ${this}`);
+      
       // this en el scope de una función
-
+      function whoIsThis() {
+        return this;
+      }
+      console.log(`In a function scope this is: ${whoIsThis()}`);
+      
+      
       // this en el scope de una función en strict mode
-
+      function whoIsThisStrict() {
+        "use strict";
+        return this;
+      }
+      console.log(`In a function scope using strict mode this is: ${whoIsThisStrict()}`);
+      
       // this en el contexto de un objeto
-
+      const person = {
+        name: 'Eduardo',
+        greet: function () {
+          console.log(`Hola soy ${this.name}`);
+          return this; 
+        }
+      }
+    
+      person.greet();
+      console.log(`In an object this is: ${person.greet()}`);
+      
       // this cuando sacamos a una función de un objeto
-
+      const action = person.greet;
+      action()
+      console.log(`In an function out of an object this is: ${action()}`);
       // this en el contexto de una "clase"
+      function Person(name) {
+        this.name = name;
+        
+      }
+      Person.prototype.greet = function () {
+        console.log(`Hola soy ${this.name}`); 
+        return this;       
+      }
+      
+      const pedro = new Person('Pedro');
+      thisClass = pedro.greet();
+      console.log(`In an class this is: ${pedro.greet()}`);
+      
+      class ClassPerson {
+        constructor(name) {
+          this.name = name;
+        }
+        greet(){
+          console.log(`Hola soy ${this.name}`); 
+          return this;
+        }
+      }
+      const juan = new ClassPerson('Juan')
+      thisClass2 = juan.greet();
+      console.log(`In an sugar code class this is: ${juan.greet()}`);
 
     </script>
   </body>
