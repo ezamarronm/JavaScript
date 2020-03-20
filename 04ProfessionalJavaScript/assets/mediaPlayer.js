@@ -8,7 +8,9 @@ MediaPlayer.prototype._initPlugins = function(){
       plugin.run(this)
    });
 }
-
+/**
+ * Play/pause button
+ */
 MediaPlayer.prototype.play = function(){
    this.media.play()
 }
@@ -27,6 +29,9 @@ MediaPlayer.prototype.togglePlay =  function(playButton)  {
     }  
 }
 
+/**
+ * Mute/unmute button
+ */
 MediaPlayer.prototype.mute = function(){
    this.media.muted = true;
 }
